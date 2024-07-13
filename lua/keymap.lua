@@ -20,19 +20,21 @@ vim.api.nvim_set_keymap("n", neotree_prefix() .. "g", [[:Neotree action=focus so
 vim.api.nvim_set_keymap("n", neotree_prefix() .. "c", [[:Neotree close<cr>]], {noremap = true, silent = true})
 
 -- Telescope
-function telescope_prefix() return "<leader>f" end -- семантика build
+function telescope_prefix() return "<leader>f" end -- семантика find
 vim.api.nvim_set_keymap("n", telescope_prefix() .. "f", [[<cmd>Telescope find_files<cr>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", telescope_prefix() .. "g", [[<cmd>Telescope live_grep<cr>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", telescope_prefix() .. "b", [[<cmd>Telescope buffers<cr>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", telescope_prefix() .. "h", [[<cmd>Telescope help_tags<cr>]], {noremap = true, silent = true})
-
--- Fine CMD Line
--- vim.api.nvim_set_keymap("n",":", [[<cmd>FineCmdline<cr>]], {noremap = true, silent = true})
-
 
 -- CMake
 function cmake_prefix() return "<leader>b" end -- семантика build
 vim.api.nvim_set_keymap("n", cmake_prefix() .. "s", [[<cmd>CMakeStop<cr>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", cmake_prefix() .. "r", [[<cmd>CMakeStop<cr><cmd>CMakeRun main<cr>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", cmake_prefix() .. "c", [[<cmd>CMakeClose<cr>]], {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", cmake_prefix() .. "b", [[<cmd>CMakeBuild<cr>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", cmake_prefix() .. "b", [[<cmd>CMakeOpen<cr><cmd>CMakeBuild<cr>]], {noremap = true, silent = true})
+
+
+
+
+-- Window Picker
+vim.api.nvim_set_keymap("n", "<leader>t", [[require('window-picker').pick_window()]], {noremap = true, silent = false})
